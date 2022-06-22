@@ -24,7 +24,7 @@ from IPython import display
 # GAME CODE
 # ======================================================================================================================
 pygame.init()
-font = pygame.font.SysFont("comfortaa.ttf", 30)
+font = pygame.font.Font("comfortaa.ttf", 15)
 
 
 # ================
@@ -76,15 +76,16 @@ class Game:
             pygame.draw.rect(self.display, YELLOW, pygame.Rect(border.x + 2, border.y + 2, 6, 6))
 
         # Render food
-        pygame.draw.circle(self.display,
-                           RED,
-                           [self.food.x, self.food.y],
-                           (CELL//2),
-                           0
-                           )
+        pygame.draw.rect(self.display,
+                         RED,
+                         pygame.Rect(self.food.x,
+                                     self.food.y,
+                                     CELL,
+                                     CELL)
+                         )
 
         # Render score
-        text = font.render(f"Score: {str(self.score)}", True, WHITE)
+        text = font.render(f"Score: {str(self.score)}", True, BLACK)
         self.display.blit(text, [0, 0])
         pygame.display.flip()
 
@@ -348,7 +349,7 @@ class QTraining:
 plt.ion()
 
 
-def plot(scores, mean_scores):
+def plot(score, mean):
     display.clear_output(wait=True)
     display.display(plt.gcf())
     window = plt.gcf()
@@ -357,11 +358,11 @@ def plot(scores, mean_scores):
     plt.title("Training data")
     plt.xlabel("Generation")
     plt.ylabel("Score")
-    plt.plot(scores)
-    plt.plot(mean_scores)
+    plt.plot(score)
+    plt.plot(mean)
     plt.ylim(ymin=0)
-    plt.text(len(scores) - 1, scores[-1], str(scores[-1]))
-    plt.text(len(mean_scores) - 1, mean_scores[-1], str(mean_scores[-1]))
+    plt.text(len(score) - 1, score[-1], str(score[-1]))
+    plt.text(len(mean) - 1, mean[-1], str(mean[-1]))
     plt.show(block=False)
     plt.pause(1)
 # ======================================================================================================================

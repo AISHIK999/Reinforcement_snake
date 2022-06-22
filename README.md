@@ -8,9 +8,13 @@
 ### Installation
 * Make sure that python has been installed in the system. Alternatively, a virtual environment can also be used
 * Install the libraries:<br>
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 * Run the model:<br>
-```python run.py```
+```bash
+python run.py
+```
 
 ### Issues:
 <code>

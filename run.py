@@ -123,8 +123,8 @@ class Player:
 
 
 def train():
-    plot_scores = []
-    plot_mean_scores = []
+    plot_score = []
+    plot_mean = []
     total_score = 0
     record = 0
     player = Player()
@@ -163,11 +163,11 @@ def train():
                   f"Score: {score}\n")
 
             # Plot the mean score to view the overall improvement of the model
-            plot_scores.append(score)
+            plot_score.append(score)
             total_score += score
-            mean_score = (total_score / player.number_of_actions)
-            plot_mean_scores.append(mean_score)
-            plot(plot_scores, plot_mean_scores)
+            mean_score = round((total_score / player.number_of_actions), 3)
+            plot_mean.append(mean_score)
+            plot(plot_score, plot_mean)
 # ================
 # End training code
 # ================
